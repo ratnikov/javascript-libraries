@@ -1,0 +1,54 @@
+
+= Provides a unified engine to alert user via javascript
+
+== Building
+
+Install <tt>jake</tt> if you haven't already:
+
+  gem install jake
+
+Run <tt>jake</tt> to build the library:
+
+  [dfr@beta alerts]$ jake
+  Package alerts...
+    -- build 'src' created /alerts-src.js, 4 kb
+    -- build 'min' created /alerts-min.js, 2 kb
+
+That should build both full and minimized alerts in <tt>build</tt> directory:
+
+  [dfr@beta alerts]$ ls build/
+  alerts-min.js  alerts-src.js
+
+Copy the compiled library to your javascript directory, include it and you're ready to go!
+
+== Using
+
+First, create a <tt>ul</tt> with id <tt>alerts</tt> that will contain all the alerts (you can
+also include a few default alerts):
+
+  <ul id="alerts">
+    <li>Custom alert</li>
+  </ul>
+
+Once the library loads, it will create an <tt>Alerts.Alert</tt> object per each li with default (5000 millisecond) duration.
+
+If you ever want to create an alert, simple instantiate <tt>Alerts.Alert</tt> object:
+
+  var alert = new Alerts.Alert("Very important message");
+
+You can specify duration via <tt>duration</tt> option:
+
+  // create a 1 second alert
+  var short_alert = new Alerts.Alert("Catch me if you can", { duration: 1000 }");
+
+You can also create permanent alerts to manually elapse them later:
+
+  var ajax_alert = new Alers.Alert("Working hard to create your post", { duration: null });
+  $.ajax({
+    type: 'post',
+    url: '/posts',
+    complete: function() {
+      // elapse the alert
+      ajax_alert.elapse();
+    }
+  });
