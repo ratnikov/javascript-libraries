@@ -3,9 +3,11 @@ Alerts.List = function(ul) {
   this._ul = ul;
 };
 
+Alerts.List.hide_effect = function() { return "blind"; };
+
 Alerts.List.prototype.remove_alert_html = function(li_dom) {
   var li = jQuery(li_dom); 
-  li.hide("drop", {}, 'normal', function() {
+  li.hide(Alerts.List.hide_effect(), {}, 'normal', function() {
     li.remove();
   });
 };
