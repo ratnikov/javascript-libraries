@@ -32,14 +32,14 @@ also include a few default alerts):
 
 Once the library loads, it will create an <tt>Alerts.Alert</tt> object per each li with default (5000 millisecond) duration.
 
-If you ever want to create an alert, simple instantiate <tt>Alerts.Alert</tt> object:
+If you ever want to create an alert, just instantiate <tt>Alerts.Alert</tt> object:
 
   var alert = new Alerts.Alert("Very important message");
 
 You can specify duration via <tt>duration</tt> option:
 
   // create a 1 second alert
-  var short_alert = new Alerts.Alert("Catch me if you can", { duration: 1000 }");
+  var short_alert = new Alerts.Alert("Catch me if you can", { duration: 1000 });
 
 You can also create permanent alerts to manually elapse them later:
 
