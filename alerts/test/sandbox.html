@@ -1,18 +1,43 @@
 <html>
   <head>
-    <script src="../../lib/jquery-1.3.2.min.js"></script>
-    <script src="../../lib/jquery-ui-1.7.1.custom.min.js"></script>
+    <script src="../lib/jquery-1.3.2.min.js"></script>
+    <script src="../lib/jquery-ui-1.7.1.custom.min.js"></script>
 
-    <!--script src="../../src/alerts/init.js"></script>
-    <script src="../../src/alerts/alert.js"></script>
-    <script src="../../src/alerts/list.js"></script-->
+    <!--script src="../src/alerts/init.js"></script>
+    <script src="../src/alerts/alert.js"></script>
+    <script src="../src/alerts/list.js"></script-->
 
-    <script src="../../build/alerts-min.js"></script>
+    <script src="../build/alerts-min.js"></script>
   </head>
   <body>
     <h1>Sandbox</h1>
     <ul id="alerts">
-      <li>Hello world</li>
+      <li>Default alert</li>
     </ul>
+
+    <form>
+      <input type="text" value="Hello world" />
+      <select>
+	<option value="1000">1 second</option>
+	<option value="5000">5 seconds</option>
+	<option value="null">permanent</option>
+      </select>
+      <input type="submit" value="Make alert" />
+    </form>
+
+    <script>
+      jQuery(document).ready(function() {
+	jQuery("form :submit").click(function(event) {
+	  event.preventDefault();
+	  var message = jQuery("form :text").val();
+	  var duration = jQuery("form select :selected").val();
+	  if (duration === 'null') { 
+	    duration = null;
+	  }
+
+	  new Alerts.Alert(message, { duration: duration });
+	});
+      });
+    </script>
   </body>
 </html>
