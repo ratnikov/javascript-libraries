@@ -1,6 +1,14 @@
 
 = Provides a unified engine to alert user via javascript
 
+== Playing
+
+There is a sample sandbox html file that you can use to get a feel what this library does.
+
+You can open it up with your favourite browser (e.g. opera) and play with it:
+
+  [dfr@beta alerts]$ opera test/sandbox.html
+
 == Building
 
 Install <tt>jake</tt> if you haven't already:
